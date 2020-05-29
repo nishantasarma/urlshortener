@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1> Hello World </h1>
+<input type="text" id="longurl"> </input>
+<button onclick="add()""> </button>
+
+<p id ='show' > </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function add(){
+      var longurl = document.getElementById("longurl").value;
+      console.log(longurl)
+      $.ajax(
+        {
+          type:"GET",
+          url:"/get_data",
+          data: {
+               key: longurl
+
+          },
+          success : function( data ){
+
+              document.getElementById("show").textContent = longurl;
+
+          }
+
+        }
+
+    )
+
+  }
+
+</script>
+
+{% endblock %}
